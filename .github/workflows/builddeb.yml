@@ -35,12 +35,12 @@ jobs:
           ref: main
           path: YouTubeHeader
 
-      - name: Checkout thaibm92/YouMute
+      - name: Checkout thaibm92/YTVideoOverlay
         uses: actions/checkout@main
         with:
-          repository: thaibm92/YouMute
+          repository: thaibm92/YTVideoOverlay
           ref: main
-          path: YouMute
+          path: YTVideoOverlay
 
       - name: Build Package 
         run: |
