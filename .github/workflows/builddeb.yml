@@ -62,5 +62,5 @@ jobs:
         with:
           tag_name: v1.2.2
           name: v1.2.2
-          files: main/packages/*.deb
+          files: packages/*.deb
           draft: ${{ env.DRAFT }}
