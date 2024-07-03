@@ -28,11 +28,19 @@ jobs:
           sparse-checkout: iPhoneOS16.2.sdk
           path: theos/sdks
           
-      - name: Clone Submodules
-        run: |
-          cd ${{ github.workspace }}/main
-          git clone https://github.com/thaibm92/YTVideoOverlay.git YTVideoOverlay
-          git clone https://github.com/PoomSmart/YouTubeHeader.git YouTubeHeader
+      - name: Checkout PoomSmart/YouTubeHeader
+        uses: actions/checkout@main
+        with:
+          repository: PoomSmart/YouTubeHeader
+          ref: main
+          path: YouTubeHeader
+
+      - name: Checkout thaibm92/YouMute
+        uses: actions/checkout@main
+        with:
+          repository: thaibm92/YouMute
+          ref: main
+          path: YouMute
 
       - name: Build Package 
         run: |
