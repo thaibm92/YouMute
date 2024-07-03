@@ -27,13 +27,12 @@ jobs:
           ref: main
           sparse-checkout: iPhoneOS16.2.sdk
           path: theos/sdks
-
-      - name: Checkout PoomSmart/YouTubeHeader
-        uses: actions/checkout@main
-        with:
-          repository: PoomSmart/YouTubeHeader
-          ref: main
-          path: YouTubeHeader
+          
+      - name: Clone Submodules
+        run: |
+          cd ${{ github.workspace }}/main
+          git clone https://github.com/thaibm92/YTVideoOverlay.git YTVideoOverlay
+          git clone https://github.com/PoomSmart/YouTubeHeader.git YouTubeHeader
 
       - name: Build Package 
         run: |
