@@ -43,10 +43,14 @@ jobs:
           path: YTVideoOverlay
 
       - name: Build Package 
+        id: build_package
         run: |
           brew install make xz ldid 
           export THEOS=theos
           gmake clean package FINALPACKAGE=1
+          PACKAGE_VERSION=$(grep '^PACKAGE_VERSION' Makefile | cut -d' ' -f3)
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+          echo "==> Built v$PACKAGE_VERSION Successfully."
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4
@@ -60,7 +64,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DRAFT: ${{ inputs.create_release }}
         with:
-          tag_name: v1.2.2
-          name: v1.2.2
+          tag_name: v${{ steps.build_package.outputs.PACKAGE_VERSION }}
+          name: v${{ steps.build_package.outputs.PACKAGE_VERSION }}
           files: packages/*.deb
           draft: ${{ env.DRAFT }}
