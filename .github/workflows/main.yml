@@ -39,7 +39,7 @@ jobs:
         uses: actions/checkout@main
         with:
           repository: thaibm92/YTVideoOverlay
-          ref: main
+          ref: 2.1.0
           path: YTVideoOverlay
 
       - name: Build Package 
